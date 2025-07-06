@@ -158,6 +158,7 @@ DEBUG=true
 
 ## Project Structure
 
+```
 app/
 ├── api/
 │   └── endpoints.py        # FastAPI route definitions
@@ -168,13 +169,17 @@ app/
 ├── services/
 │   ├── analysis_service.py # Code analysis logic
 │   ├── github_service.py   # GitHub API integration
+│   ├── llm_service.py      # OpenAI LLM integration
 │   └── task_service.py     # Task management
 ├── tasks/
 │   └── analysis_tasks.py   # Celery task definitions
 ├── tests/
 │   ├── test_api.py        # API endpoint tests
-│   └── test_celery_tasks.py # Celery task tests
+│   ├── test_celery_tasks.py # Celery task tests
+│   ├── test_llm_service.py  # LLM service tests
+│   └── test_analysis_integration.py # Integration tests
 └── main.py                # FastAPI application
+```
 
 ## Development
 
