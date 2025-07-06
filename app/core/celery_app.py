@@ -25,4 +25,10 @@ celery_app.conf.update(
     task_soft_time_limit=25 * 60,  # 25 minutes
     worker_prefetch_multiplier=1,
     worker_max_tasks_per_child=1000,
+    # Improved error handling
+    task_reject_on_worker_lost=True,
+    task_ignore_result=False,
+    result_expires=3600,  # 1 hour
+    # Better exception serialization
+    task_send_sent_event=True,
 )

@@ -58,17 +58,20 @@ def _extract_repo_info(repo_url: str) -> tuple[str, str]:
     # Remove .git suffix if present
     url = repo_url.rstrip('.git')
     
-    # Match GitHub URL patterns
+    # Match GitHub URL patterns - fixed to properly capture repo names
     patterns = [
-        r'https://github\.com/([^/]+)/([^/]+)/?$',
-        r'git@github\.com:([^/]+)/([^/]+)\.git$',
-        r'github\.com/([^/]+)/([^/]+)/?$'
+        r'https://github\.com/([^/]+)/([^/]+?)/?$',
+        r'git@github\.com:([^/]+)/([^/]+)(?:\.git)?$',
+        r'github\.com/([^/]+)/([^/]+?)/?$'
     ]
     
     for pattern in patterns:
         match = re.match(pattern, url)
         if match:
-            return match.groups()
+            owner, repo = match.groups()
+            # Clean up repo name (remove any trailing characters that shouldn't be there)
+            repo = repo.rstrip('/')
+            return owner, repo
     
     raise ValueError(f"Invalid GitHub repository URL: {repo_url}")
 
