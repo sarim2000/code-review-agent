@@ -1,6 +1,7 @@
 """Main FastAPI application"""
 from fastapi import FastAPI
 from app.api.endpoints import router
+from app.api.webhook_endpoints import router as webhook_router
 
 
 app = FastAPI(
@@ -10,6 +11,7 @@ app = FastAPI(
 )
 
 app.include_router(router)
+app.include_router(webhook_router)
 
 
 @app.get("/")
