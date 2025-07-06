@@ -12,6 +12,7 @@ dependencies = [
     "pygithub>=2.6.1",
     "python-dotenv>=1.1.1",
     "redis>=6.2.0",
+    "scalar-fastapi>=1.0.3",
     "uvicorn>=0.35.0",
 ]
 
